@@ -30,10 +30,10 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 
 $plugin_info = array(
 						'pi_name'			=> 'Snippet',
-						'pi_version'		=> '2.2',
+						'pi_version'		=> '2.3',
 						'pi_author'			=> 'David Dexter',
-						'pi_author_url'		=> 'http://www.getee.com/',
-						'pi_description'	=> 'Creates a simple snippet from a block of text. Community support available at <a href="http://getsatisfaction.com/getee" target="_blank">GetSatisfaction.com/GetEE</a>',
+						'pi_author_url'		=> 'http://codesly.com/',
+						'pi_description'	=> 'Creates a simple snippet from a block of text. Please report any issues to https://github.com/dpdexter/snippet/issues',
 						'pi_usage'			=> snippet::usage()
 					);
 
@@ -81,7 +81,7 @@ class Snippet {
 // This function describes how the plugin is used.
 //  Make sure and use output buffering
 
-function usage()
+static function usage()
 {
 ob_start(); 
 ?>
@@ -114,5 +114,3 @@ return $buffer;
 
 
 }
-// END CLASS
-?>
