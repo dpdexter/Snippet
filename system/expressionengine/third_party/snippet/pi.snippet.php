@@ -30,31 +30,28 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 
 $plugin_info = array(
 						'pi_name'			=> 'Snippet',
-						'pi_version'		=> '2.3',
+						'pi_version'		=> '2.3.1',
 						'pi_author'			=> 'David Dexter',
 						'pi_author_url'		=> 'http://codesly.com/',
 						'pi_description'	=> 'Creates a simple snippet from a block of text. Please report any issues to https://github.com/dpdexter/snippet/issues',
 						'pi_usage'			=> snippet::usage()
 					);
 
-
 class Snippet {
 
 	var $return_data = "";
 
-    function snippet()
+    public function __construct()
     {
-		$this->EE =& get_instance();
+		$total      = ee()->TMPL->fetch_param('total',500);
+		$word       = ee()->TMPL->fetch_param('word',true);
+		$ellipsis   = ee()->TMPL->fetch_param('ellipsis','...');
 		
-		$total = ( ! $this->EE->TMPL->fetch_param('total')) ? '500' :  $this->EE->TMPL->fetch_param('total');
-		$word = ( ! $this->EE->TMPL->fetch_param('word')) ? true :  $this->EE->TMPL->fetch_param('word');
-		$ellipsis = ( ! $this->EE->TMPL->fetch_param('ellipsis')) ? '...' :  $this->EE->TMPL->fetch_param('ellipsis');
-
 		if(!is_numeric($total)){
 			$total = 500;
         }
         
-        $str = strip_tags($this->EE->TMPL->tagdata);
+        $str = strip_tags(ee()->TMPL->tagdata);
         
         if(strlen($str) <= $total){
     		$this->return_data = $str;
